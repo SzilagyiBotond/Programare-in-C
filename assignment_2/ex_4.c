@@ -1,0 +1,58 @@
+#include <stdio.h>
+int fibonacci(int n,int t[]){
+	if(n==1){
+		t[n]=1;
+		return 1;
+		}
+	if(n==2){
+		t[n]=1;
+		return 1;
+		}
+	t[n]=fibonacci(n-2,t)+fibonacci(n-1,t);
+	return t[n];
+}
+void print(int n,int t[])
+{
+	int i;
+	for(i=1;i<=n;i++)
+		printf("%d ",t[i]);
+	printf("\n");
+}
+int main(){
+	int n,o;
+	int t[100];
+	printf("How many elements: ");
+	if(!scanf("%d",&n))
+		{
+			printf("Wrong input\n");
+		}
+	else if(n>=1)
+	{
+		printf("1. Solve without functions\n");
+		printf("2. Solve with function\n");
+		printf("Your option: ");
+		scanf("%d",&o);
+		if(o==1)
+		{
+			int i;
+			for(i=1 ;i<=n;i++)
+			{
+				if(i==1 || i==2)
+					{t[i]=1;
+					printf("%d ",t[i]);}
+				else
+					{t[i]=t[i-1]+t[i-2];
+					printf("%d ",t[i]);}
+			}
+			printf("\n");
+		}
+		if(o==2)
+		{
+			fibonacci(n,t);
+			print(n,t);
+		}
+	}
+		else
+			printf("Wrong input\n");
+	return 0;
+}
